@@ -18,6 +18,11 @@ module.exports = function(grunt) {
   var config = grunt.config;
   var template = grunt.template;
 
+  // external dependencies
+  var fs = require('fs');
+  var path = require('path');
+  var less = require('less');
+
   // Please see the grunt documentation for more information regarding task and
   // helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
 
@@ -25,16 +30,43 @@ module.exports = function(grunt) {
   // TASKS
   // ==========================================================================
 
-  grunt.registerTask('less', 'Your task description goes here.', function() {
-    log.write(grunt.helper('less'));
+  grunt.registerMultiTask('less', 'Your task description goes here.', function() {
+    var src = this.file.src;
+    var dest = this.file.dest;
+    var options = this.data.options || {};
+
+    var done = this.async();
+
+    utils.async.map(src, grunt.helper('less', options), function(err, results) {
+      if (err) {
+        grunt.warn(err);
+        done(false);
+      }
+
+      file.write(dest, results.join('\n\n')); 
+      done(true);
+    });
   });
 
   // ==========================================================================
   // HELPERS
   // ==========================================================================
 
-  grunt.registerHelper('less', function() {
-    return 'less!!!';
-  });
+  grunt.registerHelper('less', function(options, callback) {
+    return function(src, callback) {
+      var parser = new less.Parser({
+        paths: [path.dirname(src)]
+      });
 
+      var data = fs.readFileSync(src, 'utf8');
+      parser.parse(data, function(err, tree) {
+        if (err) {
+          callback(err);
+        }
+
+        var css = tree.toCSS(options);
+        callback(null, css);
+      });
+    };
+  });
 };
