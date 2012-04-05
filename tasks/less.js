@@ -48,6 +48,8 @@ module.exports = function(grunt) {
       if (err) {
         grunt.warn(err);
         done(false);
+        
+        return;
       }
       
       file.write(dest, results.join(utils.linefeed)); 
