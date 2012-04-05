@@ -23,9 +23,6 @@ module.exports = function(grunt) {
   var path = require('path');
   var less = require('less');
 
-  // Please see the grunt documentation for more information regarding task and
-  // helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
-
   // ==========================================================================
   // TASKS
   // ==========================================================================
@@ -34,7 +31,7 @@ module.exports = function(grunt) {
     var src = this.file.src;
     var dest = this.file.dest;
     var options = this.data.options || {};
-
+    
     var done = this.async();
 
     utils.async.map(src, grunt.helper('less', options), function(err, results) {
@@ -42,9 +39,9 @@ module.exports = function(grunt) {
         grunt.warn(err);
         done(false);
       }
-
-      file.write(dest, results.join('\n\n')); 
-      done(true);
+      
+      file.write(dest, results.join('\n')); 
+      done();
     });
   });
 
@@ -58,14 +55,29 @@ module.exports = function(grunt) {
         paths: [path.dirname(src)]
       });
 
-      var data = fs.readFileSync(src, 'utf8');
-      parser.parse(data, function(err, tree) {
+      // read source file
+      fs.readFile(src, 'utf8', function(err, data) {
         if (err) {
           callback(err);
         }
+        
+        // send data from source file to LESS parser to get CSS
+        parser.parse(data, function(err, tree) {
+          if (err) {
+            callback(err);
+          }
 
-        var css = tree.toCSS(options);
-        callback(null, css);
+          try {
+            var css = tree.toCSS({
+              compress: options.compress,
+              yuicompress: options.yuicompress
+            });
+          } catch(e) {
+            callback(e);
+          }
+
+          callback(null, css);
+        });
       });
     };
   });
