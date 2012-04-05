@@ -15,13 +15,49 @@ task.loadNpmTasks('grunt-less');
 [getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
 
 ## Documentation
-_(Coming soon)_
+This task is a [multi task][types_of_tasks], meaning that grunt will automatically iterate over all `less` targets if a target is not specified.
+
+### Target Properties
+*   __src__*(required)*: The less file(s) to be compiled. Can be either a string or an array of strings. If more than one less file is provided, each less file will be compiled individually and then concatenated together.
+*   __dest__*(required)*: The path where the output from the LESS compilation should be placed. Must be a string as there can be only one destination.
+*   __options__*(optional)*: An object that contains the options to pass to LESS.
+
+### Example
+
+```javascript
+// project configuration
+grunt.initConfig({
+    less: {
+        signup: {
+            src: 'signup.less',
+            dest: 'signup.css'
+        },
+        homepage: {
+            src: ['banner.less', 'app.less'],
+            dest: 'homepage.css',
+            options: {
+                yuicompressor: true
+            }
+        }
+        all: {
+            src: ['signup.less', 'banner.less', 'app.less'],
+            dest: 'all.css',
+            options: {
+                compress: true
+            }
+        }
+
+    }
+});
+```
+
+[types_of_tasks]: https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
-_(Nothing yet)_
+*   __04/04/2012 - 0.1.0__: Initial release.
 
 ## License
 Copyright (c) 2012 Jake Harding  
