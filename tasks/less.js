@@ -27,11 +27,25 @@ module.exports = function(grunt) {
   // TASKS
   // ==========================================================================
 
-  grunt.registerMultiTask('less', 'Your task description goes here.', function() {
+  grunt.registerMultiTask('less', 'Compile LESS files.', function() {
     var src = this.file.src;
     var dest = this.file.dest;
     var options = this.data.options || {};
-    
+
+    if (!src) {
+      grunt.warn('no src provided');
+    }
+
+    if (!dest) {
+      grunt.warn('no dest provided');
+    }
+
+    // if src is a string, turn it into an array containing that string
+    // to keep things simple
+    if (utils._.isString(src)) {
+      src = [src];
+    }
+
     var done = this.async();
 
     utils.async.map(src, grunt.helper('less', options), function(err, results) {
@@ -67,13 +81,15 @@ module.exports = function(grunt) {
             callback(err);
           }
 
+          var css = null;
           try {
-            var css = tree.toCSS({
+            css = tree.toCSS({
               compress: options.compress,
               yuicompress: options.yuicompress
             });
           } catch(e) {
             callback(e);
+            return;
           }
 
           callback(null, css);
