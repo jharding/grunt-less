@@ -18,9 +18,9 @@ task.loadNpmTasks('grunt-less');
 This task is a [multi task][types_of_tasks], meaning that grunt will automatically iterate over all `less` targets if a target is not specified.
 
 ### Target Properties
-*   __src__*(required)*: The less file(s) to be compiled. Can be either a string or an array of strings. If more than one less file is provided, each less file will be compiled individually and then concatenated together.
+*   __src__*(required)*: The LESS file(s) to be compiled. Can be either a string or an array of strings. If more than one LESS file is provided, each LESS file will be compiled individually and then concatenated together.
 *   __dest__*(required)*: The path where the output from the LESS compilation should be placed. Must be a string as there can be only one destination.
-*   __options__*(optional)*: An object that contains the options to pass to LESS.
+*   __options__*(optional)*: An object of LESS options. As of right now, the only options supported are ```compress``` and ```yuicompress```.
 
 ### Example
 
@@ -36,7 +36,7 @@ grunt.initConfig({
             src: ['banner.less', 'app.less'],
             dest: 'homepage.css',
             options: {
-                yuicompressor: true
+                yuicompress: true
             }
         }
         all: {
