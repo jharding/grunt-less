@@ -11,6 +11,7 @@ Then add this line to your project's `grunt.js` gruntfile:
 task.loadNpmTasks('grunt-less');
 ```
 
+[npm_registry_page]: http://search.npmjs.org/#/grunt-less
 [grunt]: https://github.com/cowboy/grunt
 [getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
 
@@ -40,7 +41,7 @@ grunt.initConfig({
             }
         }
         all: {
-            src: ['signup.less', 'banner.less', 'app.less'],
+            src: '*.less',
             dest: 'all.css',
             options: {
                 compress: true
