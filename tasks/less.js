@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         done(false);
       }
       
-      file.write(dest, results.join('\n')); 
+      file.write(dest, results.join(utils.linefeed)); 
       done();
     });
   });
