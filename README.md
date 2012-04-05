@@ -57,6 +57,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+*   __04/04/2012 - 0.1.1__: Checking to see if the ```src``` and ```dest``` properties are defined. Also now accept a string for ```src``` and not just an array of strings.
 *   __04/04/2012 - 0.1.0__: Initial release.
 
 ## License
