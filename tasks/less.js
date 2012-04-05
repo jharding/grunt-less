@@ -40,15 +40,11 @@ module.exports = function(grunt) {
       grunt.warn('no dest provided');
     }
 
-    // if src is a string, turn it into an array containing that string
-    // to keep things simple
-    if (utils._.isString(src)) {
-      src = [src];
-    }
+    var srcFiles = file.expandFiles(src);
 
     var done = this.async();
 
-    utils.async.map(src, grunt.helper('less', options), function(err, results) {
+    utils.async.map(srcFiles, grunt.helper('less', options), function(err, results) {
       if (err) {
         grunt.warn(err);
         done(false);
