@@ -34,5 +34,5 @@
   },
   "devDependencies": {
   },
-  "keywords": ["less", "grunt"]
+  "keywords": ["less", "grunt", "gruntplugin"]
 }
