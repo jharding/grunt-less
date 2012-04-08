@@ -1,7 +1,7 @@
 {
   "name": "grunt-less",
   "description": "LESS task for grunt.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/jharding/grunt-less",
   "author": {
     "name": "Jake Harding",

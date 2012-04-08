@@ -21,7 +21,7 @@ This task is a [multi task][types_of_tasks], meaning that grunt will automatical
 ### Target Properties
 *   __src__*(required)*: The LESS file(s) to be compiled. Can be either a string or an array of strings. If more than one LESS file is provided, each LESS file will be compiled individually and then concatenated together.
 *   __dest__*(required)*: The path where the output from the LESS compilation should be placed. Must be a string as there can be only one destination.
-*   __options__*(optional)*: An object of LESS options. As of right now, the only options supported are ```compress``` and ```yuicompress```.
+*   __options__*(optional)*: An object of LESS options. As of right now, the only options supported are `compress` and `yuicompress`.
 
 ### Example
 
@@ -58,8 +58,9 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
-*   __04/05/2012 - 0.1.2__: Adding support for wildcard patterns and normalizing linefeeds for concatenation. 
-*   __04/04/2012 - 0.1.1__: Checking to see if the ```src``` and ```dest``` properties are defined. Also now accept a string for ```src``` and not just an array of strings.
+*   __04/08/2012 - 0.1.3__: Added `gruntplugin` keyword to be [consistent with other plugins][https://github.com/cowboy/grunt/issues/111].
+*   __04/05/2012 - 0.1.2__: Added support for wildcard patterns and normalizing linefeeds for concatenation. 
+*   __04/04/2012 - 0.1.1__: Checking to see if the `src` and `dest` properties are defined. Also now accept a string for `src` and not just an array of strings.
 *   __04/04/2012 - 0.1.0__: Initial release.
 
 ## License
