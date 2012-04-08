@@ -33,26 +33,28 @@ module.exports = function(grunt) {
     var options = this.data.options || {};
 
     if (!src) {
-      grunt.warn('no src provided');
+      grunt.warn('Missing src property.');
+      return false;
     }
 
     if (!dest) {
-      grunt.warn('no dest provided');
+      grunt.warn('Missing dest property');
+      return false;
     }
 
     var srcFiles = file.expandFiles(src);
 
     var done = this.async();
 
-    utils.async.map(srcFiles, grunt.helper('less', options), function(err, results) {
+    grunt.helper('less', srcFiles, options, function(err, css) {
       if (err) {
         grunt.warn(err);
         done(false);
         
         return;
       }
-      
-      file.write(dest, results.join(utils.linefeed)); 
+
+      file.write(dest, css);
       done();
     });
   });
@@ -61,8 +63,8 @@ module.exports = function(grunt) {
   // HELPERS
   // ==========================================================================
 
-  grunt.registerHelper('less', function(options, callback) {
-    return function(src, callback) {
+  grunt.registerHelper('less', function(srcFiles, options, callback) {
+    var compileLESSFile = function(src, callback) {
       var parser = new less.Parser({
         paths: [path.dirname(src)]
       });
@@ -72,8 +74,9 @@ module.exports = function(grunt) {
         if (err) {
           callback(err);
         }
-        
+
         // send data from source file to LESS parser to get CSS
+        verbose.writeln('Parsing ' + src);
         parser.parse(data, function(err, tree) {
           if (err) {
             callback(err);
@@ -94,5 +97,14 @@ module.exports = function(grunt) {
         });
       });
     };
+
+    utils.async.map(srcFiles, compileLESSFile, function(err, results) {
+      if (err) {
+        callback(err);
+        return;
+      }
+     
+      callback(null, results.join(utils.linefeed));
+    });
   });
 };
