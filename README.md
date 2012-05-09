@@ -8,7 +8,7 @@ Install this grunt plugin next to your project's [grunt.js gruntfile][getting_st
 Then add this line to your project's `grunt.js` gruntfile:
 
 ```javascript
-task.loadNpmTasks('grunt-less');
+grunt.loadNpmTasks('grunt-less');
 ```
 
 [npm_registry_page]: http://search.npmjs.org/#/grunt-less
