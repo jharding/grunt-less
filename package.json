@@ -5,7 +5,8 @@
   "homepage": "https://github.com/jharding/grunt-less",
   "author": {
     "name": "Jake Harding",
-    "email": "jacob.s.harding@gmail.com"
+    "email": "jacob.s.harding@gmail.com",
+    "url": "http://thejakeharding.com"
   },
   "repository": {
     "type": "git",
