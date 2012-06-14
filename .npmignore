@@ -4,3 +4,4 @@
 .lvimrc
 
 /node_modules/
+test/fixtures/output
