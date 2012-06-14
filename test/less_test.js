@@ -21,12 +21,28 @@ var grunt = require('grunt');
 */
 
 exports.less = {
-    main: function(test) {
+    no_compress: function(test) {
         var expect = 'body {\n  background: #000000;\n}\n';
         var results = grunt.file.read('fixtures/output/test.css');
 
         test.expect(1);
         test.equal(expect, results, "should compile LESS file");
+        test.done();
+    },
+    compress: function(test) {
+        var expect = 'body{background:#000000;}\n';
+        var results = grunt.file.read('fixtures/output/test_compress.css');
+
+        test.expect(1);
+        test.equal(expect, results, "should compile and compress LESS file");
+        test.done();
+    },
+    yuicompress: function(test) {
+        var expect = 'body{background:#000}';
+        var results = grunt.file.read('fixtures/output/test_yuicompress.css');
+
+        test.expect(1);
+        test.equal(expect, results, "should compile yuicompress LESS file");
         test.done();
     }
 };
