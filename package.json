@@ -1,13 +1,9 @@
 {
   "name": "grunt-less",
   "description": "Grunt task for LESS.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://github.com/jharding/grunt-less",
-  "author": {
-    "name": "Jake Harding",
-    "email": "jacob.s.harding@gmail.com",
-    "url": "http://thejakeharding.com"
-  },
+  "author": "Jake Harding <jacob.s.harding@gmail.com> (http://thejakeharding.com)",
   "repository": {
     "type": "git",
     "url": "git://github.com/jharding/grunt-less.git"
@@ -22,7 +18,9 @@
     }
   ],
   "main": "grunt.js",
-  "bin": "bin/grunt-less",
+  "bin": {
+    "grunt-less": "bin/grunt-less"
+  },
   "engines": {
     "node": ">=0.6.0"
   },
@@ -36,5 +34,10 @@
   "devDependencies": {
     "grunt": "~0.3.7"
   },
-  "keywords": ["less", "grunt", "gruntplugin"]
+  "keywords": [
+    "less",
+    "grunt",
+    "gruntplugin"
+  ],
+  "optionalDependencies": {}
 }
