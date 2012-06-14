@@ -20,15 +20,13 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
-exports['less'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
-  'helper': function(test) {
-    test.expect(1);
-    // tests here
-    test.ok(true); // good news, true === true
-    test.done();
-  }
+exports.less = {
+    main: function(test) {
+        var expect = 'body {\n  background: #000000;\n}\n';
+        var results = grunt.file.read('fixtures/output/test.css');
+
+        test.expect(1);
+        test.equal(expect, results, "should compile LESS file");
+        test.done();
+    }
 };
