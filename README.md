@@ -28,27 +28,26 @@ This task is a [multi task][types_of_tasks], meaning that grunt will automatical
 ```javascript
 // project configuration
 grunt.initConfig({
-    less: {
-        signup: {
-            src: 'signup.less',
-            dest: 'signup.css'
-        },
-        homepage: {
-            src: ['banner.less', 'app.less'],
-            dest: 'homepage.css',
-            options: {
-                yuicompress: true
-            }
-        }
-        all: {
-            src: '*.less',
-            dest: 'all.css',
-            options: {
-                compress: true
-            }
-        }
-
+  less: {
+    signup: {
+      src: 'signup.less',
+      dest: 'signup.css'
+    },
+    homepage: {
+      src: ['banner.less', 'app.less'],
+      dest: 'homepage.css',
+      options: {
+        yuicompress: true
+      }
+    },
+    all: {
+      src: '*.less',
+      dest: 'all.css',
+      options: {
+        compress: true
+      }
     }
+  }
 });
 ```
 
@@ -58,6 +57,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+*   __06/14/2012 - 0.1.5__: Added test cases. 
 *   __04/08/2012 - 0.1.4__: Refactored the code to make the helper function more usable. 
 *   __04/08/2012 - 0.1.3__: Added `gruntplugin` keyword to be [consistent with other plugins](https://github.com/cowboy/grunt/issues/111).
 *   __04/05/2012 - 0.1.2__: Added support for wildcard patterns and normalizing linefeeds for concatenation. 
@@ -65,5 +65,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 *   __04/04/2012 - 0.1.0__: Initial release.
 
 ## License
-Copyright (c) 2012 Jake Harding  
+Copyright (c) 2012 Jake Harding
 Licensed under the MIT license.
