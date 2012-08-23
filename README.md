@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/jharding/grunt-less.png)](http://travis-ci.org/jharding/grunt-less)
 # grunt-less
 
 LESS task for grunt.
