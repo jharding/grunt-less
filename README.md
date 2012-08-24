@@ -1,9 +1,12 @@
 [![build status](https://secure.travis-ci.org/jharding/grunt-less.png)](http://travis-ci.org/jharding/grunt-less)
-# grunt-less
+grunt-less
+----------
 
 LESS task for grunt.
 
-## Getting Started
+Getting Started
+===============
+
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-less`
 
 Then add this line to your project's `grunt.js` gruntfile:
@@ -16,7 +19,9 @@ grunt.loadNpmTasks('grunt-less');
 [grunt]: https://github.com/cowboy/grunt
 [getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
 
-## Documentation
+Documentation
+=============
+
 This task is a [multi task][types_of_tasks], meaning that grunt will automatically iterate over all `less` targets if a target is not specified.
 
 ### Target Properties
@@ -54,10 +59,13 @@ grunt.initConfig({
 
 [types_of_tasks]: https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md
 
-## Contributing
+Contributing
+============
+
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
-## Release History
+Release History
+===============
 *   __06/14/2012 - 0.1.5__: Added test cases. 
 *   __04/08/2012 - 0.1.4__: Refactored the code to make the helper function more usable. 
 *   __04/08/2012 - 0.1.3__: Added `gruntplugin` keyword to be [consistent with other plugins](https://github.com/cowboy/grunt/issues/111).
@@ -65,6 +73,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 *   __04/04/2012 - 0.1.1__: Checking to see if the `src` and `dest` properties are defined. Also now accept a string for `src` and not just an array of strings.
 *   __04/04/2012 - 0.1.0__: Initial release.
 
-## License
+License
+=======
+
 Copyright (c) 2012 Jake Harding
 Licensed under the MIT license.
