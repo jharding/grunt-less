@@ -1,13 +1,14 @@
-/*
- * grunt-less
- * https://github.com/jachardi/grunt-less
- *
- * Copyright (c) 2012 Jake Harding
- * Licensed under the MIT license.
- */
+// grunt-less
+// ----------
+// * GitHub: https://github.com/jharding/grunt-less
+// * Copyright (c) 2012 Jake Harding
+// * Licensed under the MIT license.
+
 
 module.exports = function(grunt) {
-  // Grunt utilities.
+  // grunt utilities
+  // ===============
+
   var task = grunt.task;
   var file = grunt.file;
   var utils = grunt.utils;
@@ -18,14 +19,15 @@ module.exports = function(grunt) {
   var config = grunt.config;
   var template = grunt.template;
 
-  // external dependencies
+  // dependencies
+  // ============
+
   var fs = require('fs');
   var path = require('path');
   var less = require('less');
 
-  // ==========================================================================
-  // TASKS
-  // ==========================================================================
+  // task
+  // ====
 
   grunt.registerMultiTask('less', 'Compile LESS files.', function() {
     var src = this.file.src;
@@ -48,9 +50,9 @@ module.exports = function(grunt) {
 
     grunt.helper('less', srcFiles, options, function(err, css) {
       if (err) {
-        grunt.warn(err);
+        grunt.warn(less.formatError ? less.formatError(err) : err);
         done(false);
-        
+
         return;
       }
 
@@ -59,14 +61,14 @@ module.exports = function(grunt) {
     });
   });
 
-  // ==========================================================================
-  // HELPERS
-  // ==========================================================================
+  // helper
+  // ======
 
   grunt.registerHelper('less', function(srcFiles, options, callback) {
-    var compileLESSFile = function(src, callback) {
+    var compile = function(src, callback) {
       var parser = new less.Parser({
-        paths: [path.dirname(src)]
+        paths: [path.dirname(src)],
+        filename: src
       });
 
       // read source file
@@ -98,12 +100,12 @@ module.exports = function(grunt) {
       });
     };
 
-    utils.async.map(srcFiles, compileLESSFile, function(err, results) {
+    utils.async.map(srcFiles, compile, function(err, results) {
       if (err) {
         callback(err);
         return;
       }
-     
+
       callback(null, results.join(utils.linefeed));
     });
   });
