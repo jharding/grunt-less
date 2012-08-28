@@ -28,7 +28,6 @@
     "test": "grunt --base ./test/ --config ./test/grunt.js"
   },
   "dependencies": {
-    "grunt": "~0.3.7",
     "less": "~1.3"
   },
   "devDependencies": {
