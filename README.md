@@ -66,6 +66,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 Release History
 ===============
+*   __08/28/2012 - 0.1.6__: Remove grunt as a dependency.
 *   __06/14/2012 - 0.1.5__: Added test cases. 
 *   __04/08/2012 - 0.1.4__: Refactored the code to make the helper function more usable. 
 *   __04/08/2012 - 0.1.3__: Added `gruntplugin` keyword to be [consistent with other plugins](https://github.com/cowboy/grunt/issues/111).
