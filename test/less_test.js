@@ -22,7 +22,7 @@ var grunt = require('grunt');
 
 exports.less = {
     no_compress: function(test) {
-        var expect = 'body {\n  background: #000000;\n}\n';
+        var expect = 'body {\n  backgroun: #000000;\n}\n';
         var results = grunt.file.read('fixtures/output/test.css');
 
         test.expect(1);
